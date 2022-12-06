@@ -6,6 +6,10 @@
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>  
+
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="/scripts/walk.js"></script>
   </head>
   <body>
     <a-scene>
@@ -14,8 +18,26 @@
         <a-asset-item id="interior-obj" src="/assets/models/house/mini-house.obj"></a-asset-item>
         <a-asset-item id="interior-mtl" src="/assets/models/house/mini-house.mtl"></a-asset-item>
       </a-assets>
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" shadow></a-box> -->
+
       <a-entity environment="preset: forest" preset-switcher="" id="environment" position="" rotation="" scale="" visible=""><a-entity class="environment" position="" light="" visible="" rotation="" scale=""></a-entity><a-entity class="environment" position="" light="" visible="" rotation="" scale=""></a-entity><a-entity rotation="" class="environmentGround environment" visible="" scale="" shadow="" position=""></a-entity><a-entity class="environmentDressing environment" visible="" position="" rotation="" scale=""></a-entity>
-                 <a-entity obj-model="obj: #interior-obj; mtl: #interior-mtl"></a-entity>
-    </a-scene>
+      <a-entity obj-model="obj: #interior-obj; mtl: #interior-mtl"></a-entity>
+      <a-entity id="cameraRig" position="0 1.6 0" >
+        <a-entity id="head" position="0 0 0" camera="userHeight:1.6" look-controls="pointerLockEnabled:true">
+          <a-entity position="0.1 -0.1 0"
+            touch-listener
+            teleport-controls=
+              "cameraRig: #cameraRig;
+               teleportOrigin: #head;
+               startEvents:starttouch;
+               endEvents:endtouch;
+               curveShootingSpeed:15;
+               hitCylinderRadius:1;
+               collisionEntities: [ground]"
+            >
+          </a-entity>
+        </a-entity>
+      </a-entity>    
+     </a-scene>
   </body>
 </html>
