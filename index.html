@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.2.0/dist/aframe-environment-component.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      
+      <a-assets>
+        <a-asset-item id="interior-obj" src="/assets/models/house/mini-house.obj"></a-asset-item>
+        <a-asset-item id="interior-mtl" src="/assets/models/house/mini-house.mtl"></a-asset-item>
+      </a-assets>
+      <a-entity environment="preset: forest" preset-switcher="" id="environment" position="" rotation="" scale="" visible=""><a-entity class="environment" position="" light="" visible="" rotation="" scale=""></a-entity><a-entity class="environment" position="" light="" visible="" rotation="" scale=""></a-entity><a-entity rotation="" class="environmentGround environment" visible="" scale="" shadow="" position=""></a-entity><a-entity class="environmentDressing environment" visible="" position="" rotation="" scale=""></a-entity>
+                 <a-entity obj-model="obj: #interior-obj; mtl: #interior-mtl"></a-entity>
+    </a-scene>
+  </body>
+</html>
